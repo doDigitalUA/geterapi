@@ -23,6 +23,7 @@
 		"test": "craco test",
 		"eject": "react-scripts eject"
 	},
+	"proxy": "https://printec.netlify.app/",
 	"eslintConfig": {
 		"extends": [
 			"react-app",
