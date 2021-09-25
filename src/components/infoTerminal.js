@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 
 function Info() {
@@ -9,32 +8,37 @@ function Info() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-        const headers = {
-           
-    'Access-Control-Allow-Origin': '*',
-    'Authorization': 'Basic Y2hhdC1CMHQ6NWVIaFY5VDIzYw==', 
-    'Content-Type': 'application/json'
-  }
-	
-        const data = JSON.stringify({
-            "modelName": "InfoTerminal",
-            "calledMethod": "allSection",
-            "serial": serial,
-            "terminalID": terminalID
-          });
-// https://cors-anywhere.herokuapp.com/services.ua.printecgroup.com/tobo/IMS/api.nsf/MainAPIHelper
-// https://services.ua.printecgroup.com/tobo/IMS/api.nsf/MainAPIHelper
-		axios
-			.post(
-				'https://services.ua.printecgroup.com/tobo/IMS/api.nsf/MainAPIHelper',
-				data, {
-                    headers: headers
-                  }
-			)
-			.then((response) => {
-				console.log(response);
-			});
-	};
+        (async () => {
+  const rawResponse = await fetch("https://services.ua.printecgroup.com/tobo/IMS/api.nsf/MainAPIHelper", {
+    method: "POST",
+	referrerPolicy: "strict-origin-when-cross-origin",
+    mode: "cors",
+    credentials: "include",
+    headers: {
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+    "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+    "cache-control": "no-cache",
+    "pragma": "no-cache",
+    "sec-ch-ua": "\"Google Chrome\";v=\"93\", \" Not;A Brand\";v=\"99\", \"Chromium\";v=\"93\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "document",
+    "sec-fetch-mode": "navigate",
+    "sec-fetch-site": "none",
+    "sec-fetch-user": "?1",
+    "upgrade-insecure-requests": "1"
+  },
+    body: JSON.stringify({
+      "modelName": "InfoTerminal",
+      "calledMethod": "allSection",
+      "serial": "11111",
+      "terminalID": "11111"
+    })
+  });
+  const content = await rawResponse.json();
+
+  console.log(content);
+})();
 
 	return (
 		<>
