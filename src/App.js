@@ -3,6 +3,7 @@ import './index.css';
 import Start from './components/Start';
 
 import Info from './components/infoTerminal';
+import MyHook from './components/MyHook'
 function App() {
 
   return (
@@ -16,6 +17,7 @@ function App() {
 
    
      <Info />
+    <MyHook />
 
   </div>
      )
