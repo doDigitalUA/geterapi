@@ -1,4 +1,5 @@
-const useFetch = (url, options) => {
+function MyHook() {  
+  const useFetch = (url, options) => {
   const [response, setResponse] = React.useState(null);
   const [error, setError] = React.useState(null);
 
@@ -30,3 +31,5 @@ const ImageFetch = props => {
     </div>
   );
 };
+}
+export default MyHook;
