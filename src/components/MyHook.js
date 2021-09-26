@@ -17,6 +17,7 @@ const useFetch = (url, options) => {
 
   return { response, error };
 };
+
 const ImageFetch = props => {
   const res = useFetch('https://dog.ceo/api/breeds/image/random', {});
   if (!res.response) {
@@ -29,5 +30,3 @@ const ImageFetch = props => {
     </div>
   );
 };
-
-ReactDOM.render(<ImageFetch />, document.getElementById('root'));
