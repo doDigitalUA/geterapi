@@ -1,9 +1,12 @@
+
+import React, { useState, useEffect } from 'react';
+
 function MyHook() {  
   const useFetch = (url, options) => {
-  const [response, setResponse] = React.useState(null);
-  const [error, setError] = React.useState(null);
+  const [response, setResponse] = useState(null);
+  const [error, setError] = useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await fetch(url, options);
